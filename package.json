@@ -1,13 +1,13 @@
 {
   "name": "storybook-addon-discussion",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Leave comments for components and documentations",
   "keywords": [
-    "storybook-addons", "discussion", "comments", "storybook-addons"
+    "discussion", "comments", "storybook-addons"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/hamed-farag/storybook-addon-discussion.git"
+    "url": "https://github.com/hamed-farag/storybook-addon-discussion"
   },
   "author": "hamed-farag <hamed.farag.2009@gmail.com>",
   "license": "MIT",
