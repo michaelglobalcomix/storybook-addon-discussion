@@ -13,11 +13,11 @@ addons.register(ADDON_ID, () => {
   // Register the tab
   addons.add(TAB_ID, {
     type: types.TAB,
-    title: "My addon",
+    title: "Discussion",
     //👇 Checks the current route for the story
-    route: ({ storyId }) => `/myaddon/${storyId}`,
+    route: ({ storyId }) => `/discussion/${storyId}`,
     //👇 Shows the Tab UI element in myaddon view mode
-    match: ({ viewMode }) => viewMode === "myaddon",
+    match: ({ viewMode }) => viewMode === "discussion",
     render: Tab,
   });
 });

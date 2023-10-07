@@ -1,4 +1,4 @@
-export const ADDON_ID = "storybook/my-addon";
+export const ADDON_ID = "storybook/discussion";
 export const TAB_ID = `${ADDON_ID}/tab`;
 
 export const EVENTS = {
