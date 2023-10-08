@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "description": "Leave comments for components and documentations",
   "keywords": [
-    "discussion", "comments", "storybook-addons"
+    "discussion",
+    "comments",
+    "storybook-addons",
+    "appwrite.io"
   ],
   "repository": {
     "type": "git",
@@ -107,6 +110,9 @@
     "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
   },
   "dependencies": {
-    "ts-dedent": "2.2.0"
+    "@supabase/supabase-js": "^2.38.0",
+    "supabase": "^1.100.1",
+    "ts-dedent": "2.2.0",
+    "yup": "^1.3.2"
   }
 }
