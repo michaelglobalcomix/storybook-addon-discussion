@@ -1,20 +1,30 @@
 import { useEffect, useState, useMemo } from "react";
 import { PostgrestError } from "@supabase/supabase-js";
 
+import { useParameter } from "@storybook/manager-api";
+
 import { Comment_V1_Service } from "@services/supabase/service";
+
 import { IComment } from "@interfaces/comment";
+import { IDiscussionParameters, Tables } from "@interfaces/supabase";
 
-import { Tables } from "@interfaces/supabase";
+import { transformComment } from "@transformers/comment";
 
-const formatDateToFriendlyDate = (date: string) => {
-  return new Intl.DateTimeFormat("en-GB", {
-    dateStyle: "medium",
-    timeStyle: "short",
-  }).format(new Date(date));
-};
+import { PARAM_KEY } from "@/constants";
 
 export function useComments(storyId: string) {
-  const service = useMemo(() => new Comment_V1_Service(), []);
+  const paramData = useParameter<IDiscussionParameters>(PARAM_KEY, {
+    supabase: {
+      url: "http://", // DEFAULTS
+      secret: "SECRET_KEY", // DEFAULTS
+    },
+  });
+
+  const service = useMemo(
+    () =>
+      new Comment_V1_Service(paramData.supabase.url, paramData.supabase.secret),
+    []
+  );
 
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<PostgrestError | null>(null);
@@ -29,17 +39,7 @@ export function useComments(storyId: string) {
     comments: Array<Tables<"comments_v1">>
   ): Array<IComment> => {
     if (comments) {
-      return comments.map((comment) => {
-        const friendlyCreatedAt = formatDateToFriendlyDate(comment.createdat);
-
-        return {
-          id: comment.id,
-          storyId: comment.storyid,
-          author: comment.author,
-          comment: comment.comment,
-          createdAt: friendlyCreatedAt,
-        };
-      });
+      return comments.map((comment) => transformComment(comment));
     }
 
     return [];
@@ -58,13 +58,7 @@ export function useComments(storyId: string) {
   };
 
   const setComment = async (comment: IComment) => {
-    setComments((comments) => [
-      ...comments,
-      {
-        ...comment,
-        createdAt: formatDateToFriendlyDate(comment.createdAt),
-      },
-    ]);
+    setComments((comments) => [...comments, comment]);
   };
 
   return { isLoading, error, comments, setComment };

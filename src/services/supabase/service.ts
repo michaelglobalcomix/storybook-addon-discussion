@@ -19,8 +19,8 @@ export class Comment_V1_Service
 {
   private data: Comment_V1_Data;
 
-  constructor() {
-    this.data = new Comment_V1_Data();
+  constructor(url: string, secret: string) {
+    this.data = new Comment_V1_Data(url, secret);
   }
 
   async insert(data: IComment) {

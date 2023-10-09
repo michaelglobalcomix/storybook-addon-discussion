@@ -12,6 +12,8 @@ export default defineConfig({
       "@interfaces": path.join(__dirname, "src/interfaces"),
       "@UI": path.join(__dirname, "src/UI"),
       "@services": path.join(__dirname, "src/services"),
+      "@utils": path.join(__dirname, "src/utils"),
+      "@transformers": path.join(__dirname, "src/transformers"),
       "@": path.join(__dirname, "src"),
     },
   },

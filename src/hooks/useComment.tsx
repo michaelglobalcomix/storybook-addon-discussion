@@ -1,11 +1,27 @@
 import { useState, useMemo } from "react";
 import { PostgrestError } from "@supabase/supabase-js";
 
+import { useParameter } from "@storybook/manager-api";
+
 import { Comment_V1_Service } from "@services/supabase/service";
 import { IComment } from "@interfaces/comment";
+import { IDiscussionParameters } from "@interfaces/supabase";
 
-export function useComment(storyId: string) {
-  const service = useMemo(() => new Comment_V1_Service(), []);
+import { PARAM_KEY } from "@/constants";
+
+export function useComment() {
+  const paramData = useParameter<IDiscussionParameters>(PARAM_KEY, {
+    supabase: {
+      url: "http://", // DEFAULTS
+      secret: "SECRET_KEY", // DEFAULTS
+    },
+  });
+
+  const service = useMemo(
+    () =>
+      new Comment_V1_Service(paramData.supabase.url, paramData.supabase.secret),
+    []
+  );
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<PostgrestError | null>(null);

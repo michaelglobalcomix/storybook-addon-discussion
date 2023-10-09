@@ -1,5 +1,12 @@
 import { PostgrestError } from "@supabase/supabase-js";
 
+export interface IDiscussionParameters {
+  supabase: {
+    url: string;
+    secret: string;
+  };
+}
+
 export type Json =
   | string
   | number

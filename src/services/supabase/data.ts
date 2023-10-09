@@ -20,8 +20,8 @@ export class Comment_V1_Data
 {
   private db: SupabaseClient<Database>;
 
-  constructor() {
-    this.db = new SupabaseInstance().getDBInstance();
+  constructor(url: string, secret: string) {
+    this.db = SupabaseInstance.getDBInstance(url, secret);
   }
 
   async insert(comment: TablesInsert<"comments_v1">) {

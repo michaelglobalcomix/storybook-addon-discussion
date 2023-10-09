@@ -9,6 +9,8 @@ import { IComment } from "@interfaces/comment";
 
 import { useComment } from "@hooks/useComment";
 
+import { transformComment } from "@transformers/comment";
+
 import { validateComment } from "./CommentFormSchema";
 
 import {
@@ -24,7 +26,7 @@ type TCommentBoxProps = {
 export function CommentBox(props: TCommentBoxProps) {
   const { storyId, setComment } = props;
   const formRef = useRef<HTMLFormElement>(null);
-  const { isLoading, error, saveComment } = useComment(storyId);
+  const { isLoading, error, saveComment } = useComment();
 
   const [formErrors, setFormErrors] = useState<{
     [key: string]: string | null;
@@ -59,7 +61,7 @@ export function CommentBox(props: TCommentBoxProps) {
 
       if (response.data) {
         // SAVE NEW COMMENT INTO LOCAL STATE
-        setComment(commentData);
+        setComment(transformComment(response.data));
 
         // CLEAR FORM
         formRef.current.reset();

@@ -19,7 +19,9 @@
       "@interfaces/*": ["./src/interfaces/*"],
       "@UI/*": ["./src/UI/*"],
       "@services/*": ["./src/services/*"],
-      "@/*": ["./src/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@transformers/*": ["./src/transformers/*"],
+      "@/*": ["./src/*"]
     }
   },
   "include": ["src/**/*"]
