@@ -1,5 +1,5 @@
 {
-  "name": "storybook-addon-discussion",
+  "name": "@storybook/addon-discussion",
   "version": "0.1.0",
   "description": "Leave comments for components and documentations",
   "keywords": [
@@ -42,9 +42,9 @@
     "*.d.ts"
   ],
   "scripts": {
-    "clean": "rimraf ./dist",
+    "clean": "rimraf ./dist ./storybook-static",
     "prebuild": "yarn clean",
-    "build": "tsup",
+    "build": "tsup --publicDir",
     "build:watch": "yarn build --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "run-p build:watch 'storybook --quiet'",
