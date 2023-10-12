@@ -1,10 +1,11 @@
 {
-  "name": "@storybook/addon-discussion",
+  "name": "storybook-addon-discussion",
   "version": "0.1.0-alpha.0",
   "description": "Leave comments for components and documentations",
   "keywords": [
     "discussion",
     "comments",
+    "supabase",
     "storybook-addons",
     "appwrite.io"
   ],
