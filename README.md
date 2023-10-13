@@ -26,7 +26,7 @@ export default config;
 ```
 
 ```ts
-// .storybook/preview
+// .storybook/preview.ts
 
 import type { Preview } from "@storybook/react";
 

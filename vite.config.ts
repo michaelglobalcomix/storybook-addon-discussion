@@ -16,6 +16,5 @@ export default defineConfig({
       "@transformers": path.join(__dirname, "src/transformers"),
       "@": path.join(__dirname, "src"),
     },
-  },
-  publicDir: "public",
+  }
 });

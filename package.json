@@ -45,7 +45,7 @@
   "scripts": {
     "clean": "rimraf ./dist ./storybook-static",
     "prebuild": "yarn clean",
-    "build": "tsup --publicDir",
+    "build": "tsup",
     "build:watch": "yarn build --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "run-p build:watch \"storybook --quiet\"",
