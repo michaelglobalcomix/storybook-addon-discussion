@@ -4,6 +4,9 @@ import { PostgrestError } from "@supabase/supabase-js";
 import { CommentsWrapper } from "@UI/CommentsWrapper";
 import { Spinner } from "@UI/Spinner";
 
+import { ChatSVG } from "@UI/images/ChatSVG";
+import { CommunicationErrorSVG } from "@UI/images/CommunicationErrorSVG";
+
 import { IComment } from "@interfaces/comment";
 
 import { ImageContainer, SpinnerContainer } from "./CommentsList.styles";
@@ -28,7 +31,7 @@ export function CommentsList(props: TCommentBoxProps) {
   if (!isLoading && error) {
     return (
       <ImageContainer>
-        <img src="./assets/communication-error.png" alt="Comments Error" />
+        <CommunicationErrorSVG />
         <h3>Something went wrong, while loading comments!</h3>
       </ImageContainer>
     );
@@ -37,7 +40,7 @@ export function CommentsList(props: TCommentBoxProps) {
   if (!isLoading && comments.length === 0) {
     return (
       <ImageContainer>
-        <img src="./assets/chat.png" alt="No Comments yet" />
+        <ChatSVG />
         <h3>No one has written his comment yet! Be the first one!</h3>
       </ImageContainer>
     );

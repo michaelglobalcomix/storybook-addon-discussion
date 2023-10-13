@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { ValidationError } from "yup";
 
 import { FieldGroup } from "@UI/FieldGroup";
@@ -6,6 +6,7 @@ import { Textbox } from "@UI/Textbox";
 import { Textarea } from "@UI/Textarea";
 
 import { IComment } from "@interfaces/comment";
+import { IDiscussionParameters } from "@interfaces/supabase";
 
 import { useComment } from "@hooks/useComment";
 
@@ -21,12 +22,14 @@ import {
 type TCommentBoxProps = {
   storyId: string;
   setComment: (comment: IComment) => void;
+  paramData: IDiscussionParameters;
 };
 
 export function CommentBox(props: TCommentBoxProps) {
-  const { storyId, setComment } = props;
+  const { storyId, setComment, paramData } = props;
   const formRef = useRef<HTMLFormElement>(null);
-  const { isLoading, error, saveComment } = useComment();
+  //
+  const { isLoading, error, saveComment } = useComment(paramData);
 
   const [formErrors, setFormErrors] = useState<{
     [key: string]: string | null;

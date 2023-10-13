@@ -1,8 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
 import { PostgrestError } from "@supabase/supabase-js";
 
-import { useParameter } from "@storybook/manager-api";
-
 import { Comment_V1_Service } from "@services/supabase/service";
 
 import { IComment } from "@interfaces/comment";
@@ -10,16 +8,7 @@ import { IDiscussionParameters, Tables } from "@interfaces/supabase";
 
 import { transformComment } from "@transformers/comment";
 
-import { PARAM_KEY } from "@/constants";
-
-export function useComments(storyId: string) {
-  const paramData = useParameter<IDiscussionParameters>(PARAM_KEY, {
-    supabase: {
-      url: "http://", // DEFAULTS
-      secret: "SECRET_KEY", // DEFAULTS
-    },
-  });
-
+export function useComments(storyId: string, paramData: IDiscussionParameters) {
   const service = useMemo(
     () =>
       new Comment_V1_Service(paramData.supabase.url, paramData.supabase.secret),
