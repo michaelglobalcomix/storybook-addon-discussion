@@ -12,14 +12,9 @@ interface TabProps {
 
 export const Tab: React.FC<TabProps> = ({ active }) => {
   const state = useStorybookState();
-  const paramData = useParameter<IDiscussionParameters>(PARAM_KEY, {
-    supabase: {
-      url: "http://", // DEFAULTS
-      secret: "SECRET_KEY", // DEFAULTS
-    },
-  });
+  const paramData = useParameter<IDiscussionParameters | null>(PARAM_KEY, null);
 
   const { storyId } = state;
 
-  return active ? <TabContent storyId={storyId} paramData={paramData} /> : null;
+  return active && paramData ? <TabContent storyId={storyId} paramData={paramData} /> : null;
 };
