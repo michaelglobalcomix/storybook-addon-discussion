@@ -1,3 +1,16 @@
+# v0.1.4 (Fri Oct 13 2023)
+
+#### ⚠️ Pushed to `master`
+
+- chore: update readme file ([@hamed-farag](https://github.com/hamed-farag))
+- fix: change way to load the images ([@hamed-farag](https://github.com/hamed-farag))
+
+#### Authors: 1
+
+- Hamed Farag ([@hamed-farag](https://github.com/hamed-farag))
+
+---
+
 # v0.1.3 (Thu Oct 12 2023)
 
 #### ⚠️ Pushed to `master`
