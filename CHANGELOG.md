@@ -1,3 +1,17 @@
+# v0.1.5 (Sat Oct 14 2023)
+
+#### ⚠️ Pushed to `master`
+
+- Merge branch 'master' of https://github.com/hamed-farag/storybook-addon-discussion ([@hamed-farag](https://github.com/hamed-farag))
+- fix: check paramData before rendering ([@hamed-farag](https://github.com/hamed-farag))
+- refactor: remove public folder ([@hamed-farag](https://github.com/hamed-farag))
+
+#### Authors: 1
+
+- Hamed Farag ([@hamed-farag](https://github.com/hamed-farag))
+
+---
+
 # v0.1.4 (Fri Oct 13 2023)
 
 #### ⚠️ Pushed to `master`
