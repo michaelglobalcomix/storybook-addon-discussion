@@ -1,3 +1,15 @@
+# v0.1.6 (Sun Oct 15 2023)
+
+#### ⚠️ Pushed to `master`
+
+- chore: update readme file ([@hamed-farag](https://github.com/hamed-farag))
+
+#### Authors: 1
+
+- Hamed Farag ([@hamed-farag](https://github.com/hamed-farag))
+
+---
+
 # v0.1.5 (Sat Oct 14 2023)
 
 #### ⚠️ Pushed to `master`
