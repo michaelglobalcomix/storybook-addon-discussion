@@ -40,7 +40,8 @@
     "dist/**/*",
     "README.md",
     "*.js",
-    "*.d.ts"
+    "*.d.ts",
+    "*.mjs"
   ],
   "scripts": {
     "clean": "rimraf ./dist ./storybook-static",
