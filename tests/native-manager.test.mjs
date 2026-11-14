@@ -3,16 +3,10 @@ import { createServer } from "node:http";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { test } from "node:test";
-import { pathToFileURL } from "node:url";
+import { chromium } from "playwright-core";
 
 const staticRoot = process.env.NATIVE_STORYBOOK_DIR;
-const playwrightPath = process.env.NATIVE_PLAYWRIGHT_ENTRY;
 assert.ok(staticRoot, "Set NATIVE_STORYBOOK_DIR to the built fixture");
-assert.ok(
-  playwrightPath,
-  "Set NATIVE_PLAYWRIGHT_ENTRY to playwright-core/index.mjs"
-);
-const { chromium } = await import(pathToFileURL(playwrightPath).href);
 
 function listen(server, port) {
   return new Promise((resolve, reject) => {

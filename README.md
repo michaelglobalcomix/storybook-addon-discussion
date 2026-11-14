@@ -1,5 +1,12 @@
 # Storybook Addon Storybook Discussion
+
 Leave comments for components and MDX documents based on [addon-kit](https://github.com/storybookjs/addon-kit), comments are saved on [supabase](https://supabase.com/) database.
+
+### Requirements
+
+- Node.js >=22.12 for tooling and Storybook `^10.6.7` as a peer dependency.
+- The `dist` exports are ESM-only. CommonJS and compatibility fallbacks are not provided.
+- The Discussion tab supports component stories and MDX documents.
 
 ### Usage
 
@@ -59,3 +66,14 @@ create table
   );
 ```
 
+### Verification
+
+VERIFIED: The real service test and an isolated Chromium Storybook 10 manager test loaded and posted real Supabase `comments_v1` fixture comments for both `example-button--primary` and `example-introduction--docs`, without provider calls. Addon compilation and type declarations passed on Node 24.22.3; verification on Node 22.12 is pending. These checks do not establish compatibility with a particular application.
+
+Run `npm test` for the service test and `npm run test:manager` for the manager test. The manager test uses the declared `playwright-core` dependency and system Chromium at `/usr/bin/chromium`. Set `NATIVE_STORYBOOK_DIR` to the built fixture path. Run it in a network-none container with a private `HOME`; both HTTP fixtures listen on container loopback only. The Playwright package is used only for this test and does not download a browser.
+
+Build the fixture with:
+
+```sh
+storybook build --config-dir tests/storybook --disable-telemetry --output-dir storybook-fixture
+```
