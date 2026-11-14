@@ -1,4 +1,4 @@
-import { ProjectAnnotations, Renderer } from '@storybook/types';
+import { ProjectAnnotations, Renderer } from 'storybook/internal/types';
 
 /**
  * A decorator is a way to wrap a story in extra “rendering” functionality. Many addons define decorators

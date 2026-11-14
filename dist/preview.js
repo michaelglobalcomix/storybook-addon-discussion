@@ -1,7 +1,2 @@
-'use strict';
-
-var e={},o=e;
-
-module.exports = o;
-//# sourceMappingURL=out.js.map
+var e={},t=e;export{t as default};//# sourceMappingURL=preview.js.map
 //# sourceMappingURL=preview.js.map
