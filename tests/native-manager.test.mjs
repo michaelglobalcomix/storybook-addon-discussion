@@ -96,8 +96,10 @@ test("native manager loads and posts story and MDX discussions", async () => {
     executablePath: "/usr/bin/chromium",
     headless: true,
   });
+  const page = await browser.newPage();
+  const pageErrors = [];
+  page.on("pageerror", (error) => pageErrors.push(error.message));
   try {
-    const page = await browser.newPage();
     const external = [];
     page.on("request", (request) => {
       if (
@@ -126,6 +128,11 @@ test("native manager loads and posts story and MDX discussions", async () => {
       assert.ok(reads.includes(storyId));
     }
     assert.deepEqual(external, []);
+    assert.deepEqual(pageErrors, []);
+  } catch (error) {
+    console.error({ reads, inserts, pageErrors, url: page.url() });
+    console.error(await page.locator("body").innerText());
+    throw error;
   } finally {
     await browser.close();
     await Promise.all([close(files), close(postgrest)]);
