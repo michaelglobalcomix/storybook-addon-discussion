@@ -8,5 +8,6 @@ export default {
     fileURLToPath(
       new URL("../../src/stories/**/*.stories.ts", import.meta.url)
     ),
+    fileURLToPath(new URL("../failure.stories.ts", import.meta.url)),
   ],
 };

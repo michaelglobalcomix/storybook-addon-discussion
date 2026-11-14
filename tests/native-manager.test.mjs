@@ -46,6 +46,17 @@ test("native manager loads and posts story and MDX discussions", async () => {
     if (request.method === "GET") {
       const storyId = url.searchParams.get("storyid").slice(3);
       reads.push(storyId);
+      if (storyId === "fixture-discussion--load-error") {
+        response.writeHead(400).end(
+          JSON.stringify({
+            code: "PGRST100",
+            message: "Fixture rejected the query",
+            details: null,
+            hint: null,
+          })
+        );
+        return;
+      }
       response.end(
         JSON.stringify([
           {
@@ -121,6 +132,30 @@ test("native manager loads and posts story and MDX discussions", async () => {
       assert.equal(inserts.at(-1).author, "Fixture author");
       assert.ok(reads.includes(storyId));
     }
+    await page.goto(
+      "http://127.0.0.1:4178/?path=/story/fixture-discussion--load-error"
+    );
+    await page.getByRole("tab", { name: "Discussion", exact: true }).click();
+    await page
+      .getByText("Something went wrong, while loading comments!", {
+        exact: true,
+      })
+      .waitFor();
+    const readsBeforeMissingConfiguration = reads.length;
+    await page.goto(
+      "http://127.0.0.1:4178/?path=/story/fixture-discussion--missing-configuration"
+    );
+    await page.getByRole("tab", { name: "Discussion", exact: true }).click();
+    await page
+      .getByRole("tab", { name: "Discussion", exact: true, selected: true })
+      .waitFor();
+    assert.equal(
+      await page
+        .getByRole("textbox", { name: "Author Name", exact: true })
+        .count(),
+      0
+    );
+    assert.equal(reads.length, readsBeforeMissingConfiguration);
     assert.deepEqual(external, []);
     assert.deepEqual(pageErrors, []);
   } catch (error) {

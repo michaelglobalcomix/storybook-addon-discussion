@@ -3,7 +3,7 @@
 - Port the Discussion tab to Storybook `^10.6.7` with Node.js >=22.12 tooling and ESM-only `dist` exports. CommonJS and fallback compatibility are not provided.
 - Use the Storybook 10 tab selector and return a React component from the tab renderer. The previous `render: Tab` caused React hook-order error 310.
 - Keep story and MDX discussion, the `comments_v1` schema, and the public Supabase configuration field `secret`.
-- Verify real Supabase comment loading and posting for a story and an MDX document in the isolated Storybook 10 Chromium manager, without provider calls. Compilation and declarations passed on Node 24.22.3; Node 22.12 verification is pending.
+- Verify real Supabase comment loading and posting for a story and an MDX document in the isolated Storybook 10 Chromium manager, without provider calls. Clean install, service, compilation/declarations and native Chromium manager checks pass on Node 22.12.0 with runtime network access disabled.
 
 # v0.1.6 (Sun Oct 15 2023)
 
