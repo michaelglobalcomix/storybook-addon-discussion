@@ -1,4 +1,4 @@
-import { styled } from "@storybook/theming";
+import { styled } from "storybook/theming";
 
 const TabWrapper = styled.div(({ theme }) => ({
   background: theme.background.content,

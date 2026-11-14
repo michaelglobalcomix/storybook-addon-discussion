@@ -1,4 +1,4 @@
-import { styled } from "@storybook/theming";
+import { styled } from "storybook/theming";
 
 const CommentsWrapperContainer = styled.ul({
   margin: 0,

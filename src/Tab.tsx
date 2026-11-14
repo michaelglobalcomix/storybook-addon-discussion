@@ -1,5 +1,5 @@
 import React from "react";
-import { useParameter, useStorybookState } from "@storybook/manager-api";
+import { useParameter, useStorybookState } from "storybook/manager-api";
 
 import { TabContent } from "@components/TabContent";
 import { IDiscussionParameters } from "@interfaces/supabase";

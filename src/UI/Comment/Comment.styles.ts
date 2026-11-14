@@ -1,4 +1,4 @@
-import { styled } from "@storybook/theming";
+import { styled } from "storybook/theming";
 
 const CommentContainer = styled.span(({ theme }) => ({
   display: "grid",

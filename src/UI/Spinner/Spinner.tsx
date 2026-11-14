@@ -1,5 +1,5 @@
 import React from "react";
-import { styled, keyframes } from "@storybook/theming";
+import { styled, keyframes } from "storybook/theming";
 
 const ldsDualRingAnimation = keyframes`
  0% { transform: rotate(0deg); }

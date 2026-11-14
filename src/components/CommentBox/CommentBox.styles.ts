@@ -1,4 +1,4 @@
-import { styled } from "@storybook/theming";
+import { styled } from "storybook/theming";
 
 const CommentBoxFormContainer = styled.form(({ theme }) => ({
   padding: "0.5rem",
