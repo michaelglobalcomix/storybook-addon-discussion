@@ -113,11 +113,11 @@ test("native manager loads and posts story and MDX discussions", async () => {
         external.push(request.url());
       }
     });
-    for (const storyId of [
-      "example-button--primary",
-      "example-introduction--docs",
+    for (const [viewMode, storyId] of [
+      ["story", "example-button--primary"],
+      ["docs", "example-introduction--docs"],
     ]) {
-      await page.goto(`http://127.0.0.1:4178/?path=/story/${storyId}`);
+      await page.goto(`http://127.0.0.1:4178/?path=/${viewMode}/${storyId}`);
       await page.getByRole("tab", { name: "Discussion", exact: true }).click();
       await page.getByText(`Comment for ${storyId}`, { exact: true }).waitFor();
       await page
