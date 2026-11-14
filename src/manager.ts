@@ -1,3 +1,4 @@
+import { createElement } from "react";
 import { addons, types } from "storybook/manager-api";
 import { ADDON_ID, TAB_ID } from "./constants";
 import { Tab } from "./Tab";
@@ -9,15 +10,11 @@ import { Tab } from "./Tab";
 
 // Register the addon
 addons.register(ADDON_ID, () => {
-
   // Register the tab
   addons.add(TAB_ID, {
     type: types.TAB,
     title: "Discussion",
-    //👇 Checks the current route for the story
-    route: ({ storyId }) => `/discussion/${storyId}`,
-    //👇 Shows the Tab UI element in myaddon view mode
-    match: ({ viewMode }) => viewMode === "discussion",
-    render: Tab,
+    match: ({ tabId }) => tabId === TAB_ID,
+    render: ({ active }) => createElement(Tab, { active: active === true }),
   });
 });
