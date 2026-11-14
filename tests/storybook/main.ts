@@ -1,5 +1,5 @@
 import { fileURLToPath } from "node:url";
-import config from "../../.storybook/main";
+import config from "../../.storybook/main.ts";
 
 export default {
   ...config,
