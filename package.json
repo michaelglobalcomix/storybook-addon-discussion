@@ -2,7 +2,9 @@
   "name": "storybook-addon-discussion",
   "version": "0.1.7",
   "type": "module",
-  "engines": { "node": ">=22.12.0" },
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "description": "Leave comments for components and documentations",
   "keywords": [
     "discussion",
@@ -18,9 +20,18 @@
   "author": "hamed-farag <hamed.farag.2009@gmail.com>",
   "license": "MIT",
   "exports": {
-    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" },
-    "./manager": { "types": "./dist/manager.d.ts", "import": "./dist/manager.js" },
-    "./preview": { "types": "./dist/preview.d.ts", "import": "./dist/preview.js" },
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./manager": {
+      "types": "./dist/manager.d.ts",
+      "import": "./dist/manager.js"
+    },
+    "./preview": {
+      "types": "./dist/preview.d.ts",
+      "import": "./dist/preview.js"
+    },
     "./package.json": "./package.json"
   },
   "main": "dist/index.js",
