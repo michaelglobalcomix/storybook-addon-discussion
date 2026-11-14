@@ -1,0 +1,34 @@
+name: Native addon checks
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+permissions:
+  contents: read
+
+jobs:
+  native:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.12.0
+      - name: Install without lifecycle scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Check with no network or credentials
+        run: |
+          docker run --rm --network none --read-only \
+            --mount "type=bind,source=$GITHUB_WORKSPACE,target=/source,readonly" \
+            --tmpfs /workspace:rw,nosuid,nodev,exec,size=2g \
+            --tmpfs /tmp:rw,nosuid,nodev,exec,size=1g \
+            --workdir /workspace \
+            --env HOME=/tmp/home \
+            --env STORYBOOK_DISABLE_TELEMETRY=1 \
+            node:22.12.0-bookworm \
+            sh -ec 'mkdir -p "$HOME"; cp -a /source/. /workspace/; node --version; npm test; npm run build; npm run build-storybook -- --disable-telemetry --output-dir /tmp/storybook'
