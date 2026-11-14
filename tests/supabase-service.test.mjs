@@ -96,7 +96,7 @@ after(async () => {
 });
 
 test("comments_v1 uses the real Supabase client for scoped reads, inserts, and errors", async () => {
-  assert.throws(() => new service("", "fixture-key"), /Invalid supabaseUrl/);
+  assert.throws(() => new service("", "fixture-key"), /supabaseUrl is required\./);
 
   const comments = new service(origin, "fixture-key");
   const loaded = await comments.getBy("storyid", "story-123");
